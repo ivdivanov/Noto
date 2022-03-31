@@ -81,7 +81,11 @@ public class DoublyLinkedList <K,T> {
         }
     }
 
+    public Node<K, T> getFirst() {
+        return first;
+    }
 
-
-
+    public Node<K, T> getLast() {
+        return last;
+    }
 }
