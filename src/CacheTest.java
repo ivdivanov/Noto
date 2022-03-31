@@ -20,13 +20,7 @@ public class CacheTest {
 
 
     @Test
-    public void getTest() {
-        assertNull(testmap.get(test1.getKey()), null);
-        testmap.put(test1.getKey(), test1);
-        assertEquals(testmap.get("test1 Key"), test1);
-        testmap.put(test1.getKey(), test1);
-        assertEquals(testmap.size(), 1);
-        testmap.remove(test1.getKey());
+    public void returnValuesFromTheCacheTest() {
         assertNull(testmap.get(test1.getKey()), null);
         assertNull(cacheTest.get(test1.getKey()), null);
         cacheTest.putInCache(test1.getKey(), test1);
@@ -77,6 +71,16 @@ public class CacheTest {
         assertEquals(cacheCapacityTest.get("test2 Key"), test2);
         assertEquals(cacheCapacityTest.get("test3 Key"), test3);
         assertEquals(cacheCapacityTest.get("test4 Key"), test4);
+
+    }
+    @Test
+    public void putInAlreadyExistingKeyAndCheckIfValueIsUpdated() {
+        Cache<String, Node<String, String>> cacheUpdatedValueTest = new Cache<>(3);
+        cacheUpdatedValueTest.putInCache("test1 Key", test1);
+        assertEquals(test1.getValue(),test1.getValue());
+        Node<String,String> n = new Node<>("test1 Key","Updated value");
+        cacheUpdatedValueTest.putInCache(n.getKey(), n);
+        assertEquals(cacheUpdatedValueTest.get(n.getKey()).getValue(),"Updated value");
 
     }
 
