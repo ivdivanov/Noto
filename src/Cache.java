@@ -54,5 +54,9 @@ public class Cache <K,T>{
         this.liknedList.displayElements();
     }
 
+    public int currCapacity() {
+        return this.map.size();
+    }
+
 
 }
